@@ -1,15 +1,13 @@
 const mqtt = require('mqtt');
 const CronJob = require('cron').CronJob;
 
-const client  = mqtt.connect(`mqtt://192.168.1.47:1883`, {
-    clientId: 'device-service',
-    username: '',
-    password: '',
-    clean: true
-});
+const client  = mqtt.connect(`mqtt://192.168.1.47:1883`);
 
 client.on('connect', () => {
     console.log('Mqtt connected ok!');
+    // client.subscribe('house/powerswitch', function (err) {
+    //     console.log('error', err)
+    // })
 });
 
 const topic = 'house/powerswitch/cmnd/POWER';

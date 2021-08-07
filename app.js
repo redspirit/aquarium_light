@@ -10,9 +10,6 @@ const client  = mqtt.connect(`mqtt://192.168.1.47:1883`, {
 
 client.on('connect', () => {
     console.log('Mqtt connected ok!');
-    // client.subscribe('house/powerswitch', (err) => {
-    //     console.log('Subscribe to', config.subscribe);
-    // })
 });
 
 const topic = 'house/powerswitch/cmnd/POWER';

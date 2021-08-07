@@ -1,0 +1,23 @@
+{
+  "name": "aquarium_light",
+  "version": "1.0.0",
+  "description": "Маленький скрипт для автоматизации",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redspirit/aquarium_light.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/redspirit/aquarium_light/issues"
+  },
+  "homepage": "https://github.com/redspirit/aquarium_light#readme",
+  "dependencies": {
+    "cron": "^1.8.2",
+    "mqtt": "^4.2.8"
+  }
+}

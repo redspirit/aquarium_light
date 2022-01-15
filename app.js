@@ -1,7 +1,8 @@
 const mqtt = require('mqtt');
 const CronJob = require('cron').CronJob;
 
-const client  = mqtt.connect(`mqtt://192.168.1.47:1883`);
+//const client  = mqtt.connect(`mqtt://192.168.1.47:1883`);
+const client  = mqtt.connect(`mqtt://localhost:1883`);
 
 client.on('connect', () => {
     console.log('Mqtt connected ok!');

@@ -22,14 +22,14 @@ const turnOff = () => {
 }
 
 new CronJob({
-    cronTime: '0 0 8 * * 1-5',    // 08:00
+    cronTime: '0 0 8 * * 1-5',    // 08:00 в будни
     onTick: turnOn,
     start: true,
     timeZone: 'Europe/Moscow'
 });
 
 new CronJob({
-    cronTime: '0 0 9 * * 6-7',    // 09:00
+    cronTime: '0 0 9 * * 0,6',    // 09:00 в выходные
     onTick: turnOn,
     start: true,
     timeZone: 'Europe/Moscow'

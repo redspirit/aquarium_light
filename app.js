@@ -36,7 +36,7 @@ new CronJob({
 });
 
 new CronJob({
-    cronTime: '0 0 23 * * *',    // 23:00
+    cronTime: '0 0 22 * * *',    // 22:00
     onTick: turnOff,
     start: true,
     timeZone: 'Europe/Moscow'

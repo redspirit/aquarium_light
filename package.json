@@ -18,6 +18,6 @@
   "homepage": "https://github.com/redspirit/aquarium_light#readme",
   "dependencies": {
     "cron": "^1.8.2",
-    "mqtt": "^4.2.8"
+    "mqtt": "^5.3.3"
   }
 }

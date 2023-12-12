@@ -1,14 +1,25 @@
 const mqtt = require('mqtt');
 const CronJob = require('cron').CronJob;
 
-//const client  = mqtt.connect(`mqtt://192.168.1.47:1883`);
-const client  = mqtt.connect(`mqtt://localhost:1883`);
+const client  = mqtt.connect(`mqtt://192.168.1.39:1883`);
+// const client  = mqtt.connect(`mqtt://localhost:1883`);
 
 client.on('connect', () => {
     console.log('Mqtt connected ok!');
-    // client.subscribe('house/powerswitch', function (err) {
-    //     console.log('error', err)
-    // })
+    client.subscribe('zigbee2mqtt/+', (err) => {
+        console.log('error', err)
+    })
+});
+
+client.on('message', (topic, message) => {
+    // message is Buffer
+    let data = JSON.parse(message.toString());
+    console.log(topic, data);
+
+    if(topic === 'zigbee2mqtt/btn_1' && data.action === 'single') {
+        client.publish('zigbee2mqtt/switch_2/set', 'TOGGLE');
+    }
+
 });
 
 const topic = 'house/powerswitch/cmnd/POWER';

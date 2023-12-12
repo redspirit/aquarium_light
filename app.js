@@ -21,6 +21,7 @@ client.on('message', (topic, message) => {
     }
 
     if(topic === 'zigbee2mqtt/motion_1') {
+        console.log('Set', data.occupancy ? 'ON' : 'OFF');
         client.publish('zigbee2mqtt/switch_2/set', data.occupancy ? 'ON' : 'OFF');
     }
 

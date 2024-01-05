@@ -29,11 +29,11 @@ client.on('message', (topic, message) => {
 
 const topic = 'house/powerswitch/cmnd/POWER';
 const turnOn = () => {
-    client.publish(topic, 'ON');
+    //client.publish(topic, 'ON');
 }
 
 const turnOff = () => {
-    client.publish(topic, 'OFF');
+    //client.publish(topic, 'OFF');
 }
 
 new CronJob({

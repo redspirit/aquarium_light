@@ -20,15 +20,14 @@ client.on('message', (topic, message) => {
         client.publish('zigbee2mqtt/switch_2/set', 'TOGGLE');
     }
 
-    if(topic === 'zigbee2mqtt/motion_1') {
+    if(topic === 'zigbee2mqtt/lobby_motion') {
         console.log('Set', data.occupancy ? 'ON' : 'OFF');
-        client.publish('zigbee2mqtt/switch_2/set', data.occupancy ? 'ON' : 'OFF');
+        client.publish('zigbee2mqtt/mirror_light/set', data.occupancy ? 'ON' : 'OFF');
     }
 
 });
 
 const topic = 'house/powerswitch/cmnd/POWER';
-
 const turnOn = () => {
     client.publish(topic, 'ON');
 }

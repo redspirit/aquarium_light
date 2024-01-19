@@ -20,11 +20,15 @@ client.on('message', async (topic, message) => {
     console.log(topic, data);
 
     if(topic === 'zigbee2mqtt/btn_toilet' && data.action === 'single') {
-        client.publish('zigbee2mqtt/switch_toilet/set', 'ON');
-        holdToiletLight = true;
-        await utils.sleep('30m'); // ждем 30 минут и отключаем свет
-        holdToiletLight = false;
-        client.publish('zigbee2mqtt/switch_toilet/set', 'OFF');
+        holdToiletLight = !holdToiletLight;
+        if (holdToiletLight) {
+            client.publish('zigbee2mqtt/switch_toilet/set', 'ON');
+            await utils.sleep('15m'); // ждем 30 минут и отключаем свет
+            holdToiletLight = false;
+            client.publish('zigbee2mqtt/switch_toilet/set', 'OFF');
+        } else {
+            client.publish('zigbee2mqtt/switch_toilet/set', 'OFF');
+        }
     }
 
     if(topic === 'zigbee2mqtt/motion_toilet') {

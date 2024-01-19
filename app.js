@@ -12,6 +12,8 @@ client.on('connect', () => {
     })
 });
 
+let holdToiletLight = false;
+
 client.on('message', async (topic, message) => {
     // message is Buffer
     let data = JSON.parse(message.toString());
@@ -19,12 +21,20 @@ client.on('message', async (topic, message) => {
 
     if(topic === 'zigbee2mqtt/btn_toilet' && data.action === 'single') {
         client.publish('zigbee2mqtt/switch_toilet/set', 'ON');
-        await utils.sleep('5s');
+        holdToiletLight = true;
+        await utils.sleep('30m'); // ждем 30 минут и отключаем свет
+        holdToiletLight = false;
         client.publish('zigbee2mqtt/switch_toilet/set', 'OFF');
     }
 
+    if(topic === 'zigbee2mqtt/motion_toilet') {
+        if (holdToiletLight) return false;
+        let value = data.occupancy ? 'ON' : 'OFF';
+        client.publish('zigbee2mqtt/switch_toilet/set', value);
+    }
+
     if(topic === 'zigbee2mqtt/lobby_motion') {
-        console.log('Set', data.occupancy ? 'ON' : 'OFF');
+        //console.log('Set', data.occupancy ? 'ON' : 'OFF');
         client.publish('zigbee2mqtt/mirror_light/set', data.occupancy ? 'ON' : 'OFF');
     }
 

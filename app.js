@@ -37,10 +37,9 @@ client.on('message', async (topic, message) => {
         client.publish('zigbee2mqtt/switch_toilet/set', value);
     }
 
-    if(topic === 'zigbee2mqtt/lobby_motion') {
-        //console.log('Set', data.occupancy ? 'ON' : 'OFF');
-        client.publish('zigbee2mqtt/mirror_light/set', data.occupancy ? 'ON' : 'OFF');
-    }
+    // if(topic === 'zigbee2mqtt/lobby_motion') {
+    //     client.publish('zigbee2mqtt/mirror_light/set', data.occupancy ? 'ON' : 'OFF');
+    // }
 
 });
 
